@@ -1,0 +1,21 @@
+name: MDAuth
+version: ${project.version}
+main: xyz.liamsho.minecraft.mdauth.MDAuth
+api-version: 1.17
+load: STARTUP
+authors: [ LiamSho ]
+description: MDAuth for Hecatia Minecraft Server
+
+commands:
+  account:
+    usage: "/account <operation> <kaiheila_uid>"
+    description: "Common user commands, used for binding to kaiheila account."
+
+  account-manager:
+    usage: "/account-manager <operation> <param>"
+    aliases:
+      - am
+    description: "MDAuth admin commands."
+    permission: "mdauth.admin"
+    permission-message: "You do not have permission."
+
