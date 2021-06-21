@@ -24,10 +24,9 @@ public class JoinExitEvent implements Listener {
         var name = e.getPlayer().getName();
 
         RestrictedPlayers.Add(uuid);
-        e.getPlayer().setGameMode(GameMode.SPECTATOR);
+        e.getPlayer().setGameMode(GameMode.SURVIVAL);
 
         if (PlayerCache.Check(uuid)) {
-            e.getPlayer().setGameMode(GameMode.SURVIVAL);
             RestrictedPlayers.Remove(uuid);
             return;
         }
@@ -50,7 +49,18 @@ public class JoinExitEvent implements Listener {
                 return;
         }
 
-        e.getPlayer().setGameMode(GameMode.SURVIVAL);
+        var elementOnly = MDAuth.MDAuthConfiguration.getInt("elementOnly");
+        if (elementOnly != response.getData().getElement() && response.getData().getElement() != 1) {
+            switch (elementOnly) {
+                case 1: e.getPlayer().kickPlayer("本服务器为"+ ChatColor.GOLD + ChatColor.BOLD + ChatColor.ITALIC + " 金弹幕兽 " + ChatColor.RESET + "限定"); break;
+                case 2: e.getPlayer().kickPlayer("本服务器为"+ ChatColor.GREEN + ChatColor.BOLD + ChatColor.ITALIC + " 草弹幕兽 " + ChatColor.RESET + "限定"); break;
+                case 3: e.getPlayer().kickPlayer("本服务器为"+ ChatColor.AQUA + ChatColor.BOLD + ChatColor.ITALIC + " 海弹幕兽 " + ChatColor.RESET + "限定"); break;
+                case 4: e.getPlayer().kickPlayer("本服务器为"+ ChatColor.RED + ChatColor.BOLD + ChatColor.ITALIC + " 火弹幕兽 " + ChatColor.RESET + "限定"); break;
+                case 5: e.getPlayer().kickPlayer("本服务器为"+ ChatColor.YELLOW + ChatColor.BOLD + ChatColor.ITALIC + " 土弹幕兽 " + ChatColor.RESET + "限定"); break;
+                default: break;
+            }
+        }
+
         RestrictedPlayers.Remove(uuid);
         PlayerCache.AddOrUpdateCache(response.getData());
     }

@@ -2,7 +2,6 @@ package xyz.liamsho.minecraft.mdauth.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -76,7 +75,19 @@ public class CommonCommand implements CommandExecutor {
         player.sendMessage(ChatColor.GREEN + "绑定成功! 开黑啦用户：" +
                 response.getData().getKaiheilaUsername() + "#" +
                 response.getData().getKaiheilaUserIdentifyNumber());
-        player.setGameMode(GameMode.SURVIVAL);
+
+        var elementOnly = MDAuth.MDAuthConfiguration.getInt("elementOnly");
+        if (elementOnly != response.getData().getElement() && response.getData().getElement() != 1) {
+            switch (elementOnly) {
+                case 1: player.kickPlayer("本服务器为"+ ChatColor.GOLD + ChatColor.BOLD + ChatColor.ITALIC + " 金弹幕兽 " + ChatColor.RESET + "限定"); break;
+                case 2: player.kickPlayer("本服务器为"+ ChatColor.GREEN + ChatColor.BOLD + ChatColor.ITALIC + " 草弹幕兽 " + ChatColor.RESET + "限定"); break;
+                case 3: player.kickPlayer("本服务器为"+ ChatColor.AQUA + ChatColor.BOLD + ChatColor.ITALIC + " 海弹幕兽 " + ChatColor.RESET + "限定"); break;
+                case 4: player.kickPlayer("本服务器为"+ ChatColor.RED + ChatColor.BOLD + ChatColor.ITALIC + " 火弹幕兽 " + ChatColor.RESET + "限定"); break;
+                case 5: player.kickPlayer("本服务器为"+ ChatColor.YELLOW + ChatColor.BOLD + ChatColor.ITALIC + " 土弹幕兽 " + ChatColor.RESET + "限定"); break;
+                default: break;
+            }
+        }
+
         RestrictedPlayers.Remove(player.getUniqueId());
         PlayerCache.AddOrUpdateCache(response.getData());
         return true;
