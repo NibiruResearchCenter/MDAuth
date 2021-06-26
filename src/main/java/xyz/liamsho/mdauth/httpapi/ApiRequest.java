@@ -1,9 +1,9 @@
-package xyz.liamsho.minecraft.mdauth.httpapi;
+package xyz.liamsho.mdauth.httpapi;
 
 import com.alibaba.fastjson.JSON;
-import xyz.liamsho.minecraft.mdauth.MDAuth;
-import xyz.liamsho.minecraft.mdauth.httpapi.models.AddPlayerRequestModel;
-import xyz.liamsho.minecraft.mdauth.httpapi.models.ResponseModel;
+import xyz.liamsho.mdauth.MDAuth;
+import xyz.liamsho.mdauth.httpapi.models.ResponseModel;
+import xyz.liamsho.mdauth.httpapi.models.AddPlayerRequestModel;
 
 import java.io.IOException;
 import java.net.URI;

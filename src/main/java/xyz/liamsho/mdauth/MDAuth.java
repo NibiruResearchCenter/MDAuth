@@ -1,15 +1,15 @@
-package xyz.liamsho.minecraft.mdauth;
+package xyz.liamsho.mdauth;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import xyz.liamsho.minecraft.mdauth.commands.CommonCommand;
-import xyz.liamsho.minecraft.mdauth.commands.ManagerCommand;
-import xyz.liamsho.minecraft.mdauth.commands.tabhandler.CommonTabHandler;
-import xyz.liamsho.minecraft.mdauth.commands.tabhandler.ManagerTabHandler;
-import xyz.liamsho.minecraft.mdauth.eventlisteners.JoinExitEvent;
-import xyz.liamsho.minecraft.mdauth.eventlisteners.StopRestrictedPlayers;
+import xyz.liamsho.mdauth.commands.CommonCommand;
+import xyz.liamsho.mdauth.commands.ManagerCommand;
+import xyz.liamsho.mdauth.commands.tabhandler.CommonTabHandler;
+import xyz.liamsho.mdauth.commands.tabhandler.ManagerTabHandler;
+import xyz.liamsho.mdauth.eventlisteners.JoinExitEvent;
+import xyz.liamsho.mdauth.eventlisteners.StopRestrictedPlayers;
 
 import java.io.File;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package xyz.liamsho.minecraft.mdauth;
+package xyz.liamsho.mdauth;
 
 import java.util.ArrayList;
 import java.util.List;

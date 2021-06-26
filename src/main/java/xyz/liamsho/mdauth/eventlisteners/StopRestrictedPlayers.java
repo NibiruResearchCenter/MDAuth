@@ -1,4 +1,4 @@
-package xyz.liamsho.minecraft.mdauth.eventlisteners;
+package xyz.liamsho.mdauth.eventlisteners;
 
 
 import org.bukkit.event.Cancellable;
@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.*;
-import xyz.liamsho.minecraft.mdauth.RestrictedPlayers;
+import xyz.liamsho.mdauth.RestrictedPlayers;
 
 public class StopRestrictedPlayers implements Listener {
 

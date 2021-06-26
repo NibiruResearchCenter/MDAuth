@@ -1,8 +1,8 @@
-package xyz.liamsho.minecraft.mdauth;
+package xyz.liamsho.mdauth;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import xyz.liamsho.minecraft.mdauth.httpapi.models.PlayerModel;
+import xyz.liamsho.mdauth.httpapi.models.PlayerModel;
 
 import java.io.File;
 import java.io.IOException;

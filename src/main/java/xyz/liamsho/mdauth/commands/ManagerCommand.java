@@ -1,12 +1,12 @@
-package xyz.liamsho.minecraft.mdauth.commands;
+package xyz.liamsho.mdauth.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import xyz.liamsho.minecraft.mdauth.MDAuth;
-import xyz.liamsho.minecraft.mdauth.PlayerCache;
+import xyz.liamsho.mdauth.MDAuth;
+import xyz.liamsho.mdauth.PlayerCache;
 
 import java.util.UUID;
 import java.util.logging.Level;

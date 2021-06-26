@@ -1,4 +1,4 @@
-package xyz.liamsho.minecraft.mdauth.httpapi.models;
+package xyz.liamsho.mdauth.httpapi.models;
 
 import com.alibaba.fastjson.annotation.JSONField;
 

@@ -1,4 +1,4 @@
-package xyz.liamsho.minecraft.mdauth.eventlisteners;
+package xyz.liamsho.mdauth.eventlisteners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -6,10 +6,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import xyz.liamsho.minecraft.mdauth.MDAuth;
-import xyz.liamsho.minecraft.mdauth.PlayerCache;
-import xyz.liamsho.minecraft.mdauth.RestrictedPlayers;
-import xyz.liamsho.minecraft.mdauth.httpapi.ApiRequest;
+import xyz.liamsho.mdauth.MDAuth;
+import xyz.liamsho.mdauth.PlayerCache;
+import xyz.liamsho.mdauth.RestrictedPlayers;
+import xyz.liamsho.mdauth.httpapi.ApiRequest;
 
 import java.util.logging.Level;
 
