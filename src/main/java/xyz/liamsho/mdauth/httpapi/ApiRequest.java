@@ -2,8 +2,7 @@ package xyz.liamsho.mdauth.httpapi;
 
 import com.alibaba.fastjson.JSON;
 import xyz.liamsho.mdauth.MDAuth;
-import xyz.liamsho.mdauth.httpapi.models.ResponseModel;
-import xyz.liamsho.mdauth.httpapi.models.AddPlayerRequestModel;
+import xyz.liamsho.mdauth.httpapi.models.*;
 
 import java.io.IOException;
 import java.net.URI;
@@ -41,6 +40,60 @@ public class ApiRequest {
                 .build();
 
         return getResponseModel(url, request);
+    }
+
+    public static GetCrackedPlayerResponseModel GetCrackedPlayer(UUID uuid, String password) {
+        var url = Objects.requireNonNull(MDAuth.MDAuthConfiguration.getString("endPoints.crack")) +
+                "?code=" + Objects.requireNonNull(MDAuth.MDAuthConfiguration.getString("apiKeys.crack")) +
+                "&uuid=" + uuid.toString() +
+                "&pass=" + password;
+        var request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        HttpResponse<String> response;
+        try {
+            response = HttpClient.newHttpClient()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        if(response.statusCode() == 401){
+            MDAuth.MDAuthLogger.log(Level.WARNING, "Inner error: Received HTTP 401 Unauthorized with request: " + url);
+            return null;
+        }
+
+        return JSON.parseObject(response.body(), GetCrackedPlayerResponseModel.class);
+    }
+
+    public static AddCrackedPlayerResponseModel AddCrackedPlayer(UUID uuid, String password) {
+        var url = Objects.requireNonNull(MDAuth.MDAuthConfiguration.getString("endPoints.crack")) +
+                "?code=" + Objects.requireNonNull(MDAuth.MDAuthConfiguration.getString("apiKeys.crack"));
+        var bodyModel = new AddCrackedPlayerRequestModel();
+        bodyModel.setUuid(uuid.toString());
+        bodyModel.setPassword(password);
+        var request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(JSON.toJSONString(bodyModel)))
+                .build();
+        HttpResponse<String> response;
+        try {
+            response = HttpClient.newHttpClient()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        if(response.statusCode() == 401){
+            MDAuth.MDAuthLogger.log(Level.WARNING, "Inner error: Received HTTP 401 Unauthorized with request: " + url);
+            return null;
+        }
+
+        return JSON.parseObject(response.body(), AddCrackedPlayerResponseModel.class);
     }
 
     private static ResponseModel getResponseModel(String url, HttpRequest request) {

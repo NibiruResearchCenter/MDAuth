@@ -4,18 +4,30 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 public class ResponseModel {
     @JSONField(name = "code")
-    private int code;
+    private int Code;
     @JSONField(name = "message")
-    private String message;
+    private String Message;
     @JSONField(name = "data")
-    private PlayerModel data;
+    private Player Data;
 
-    public int getCode() { return code; }
-    public void setCode(int value) { this.code = value; }
+    public int getCode() {
+        return Code;
+    }
+    public void setCode(int code) {
+        Code = code;
+    }
 
-    public String getMessage() { return message; }
-    public void setMessage(String value) { this.message = value; }
+    public String getMessage() {
+        return Message;
+    }
+    public void setMessage(String message) {
+        Message = message;
+    }
 
-    public PlayerModel getData() { return data; }
-    public void setData(PlayerModel value) { this.data = value; }
+    public Player getData() {
+        return Data;
+    }
+    public void setData(Player data) {
+        Data = data;
+    }
 }

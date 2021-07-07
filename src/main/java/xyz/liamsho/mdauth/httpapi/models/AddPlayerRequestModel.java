@@ -5,19 +5,47 @@ import com.alibaba.fastjson.annotation.JSONField;
 import java.util.UUID;
 
 public class AddPlayerRequestModel {
-    @JSONField(name = "kaiheila_uid")
-    private String kaiheilaUid;
+    @JSONField(name = "uid")
+    public String Uid;
     @JSONField(name = "uuid")
-    private UUID uuid;
+    public String Uuid;
+    @JSONField(name = "platform")
+    public String Platform;
     @JSONField(name = "player_name")
-    private String playerName;
+    public String PlayerName;
+    @JSONField(name = "is_legit_copy")
+    public boolean IsLegitCopy;
 
-    public String getKaiheilaUid() { return kaiheilaUid; }
-    public void setKaiheilaUid(String value) { this.kaiheilaUid = value; }
+    public String getUid() {
+        return Uid;
+    }
+    public void setUid(String uid) {
+        Uid = uid;
+    }
 
-    public UUID getUUID() { return uuid; }
-    public void setUUID(UUID value) { this.uuid = value; }
+    public String getUuid() {
+        return Uuid;
+    }
+    public void setUuid(String uuid) {
+        Uuid = uuid;
+    }
 
-    public String getPlayerName() { return playerName; }
-    public void setPlayerName(String value) { this.playerName = value; }
+    public String getPlatform() {
+        return Platform;
+    }
+    public void setPlatform(String platform) {
+        Platform = platform;
+    }
+
+    public String getPlayerName() {
+        return PlayerName;
+    }
+    public void setPlayerName(String playerName) {
+        PlayerName = playerName;
+    }
+
+    public boolean getLegitCopy() { return IsLegitCopy; }
+    public void setLegitCopy(boolean legitCopy) {
+        IsLegitCopy = legitCopy;
+    }
 }
