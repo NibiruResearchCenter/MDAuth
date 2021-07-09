@@ -13,6 +13,8 @@ import xyz.liamsho.mdauth.httpapi.CheckPlayerName;
 import java.util.Objects;
 import java.util.logging.Level;
 
+import static xyz.liamsho.mdauth.MDAuth.LuckPermsApi;
+
 public class AuthenticationSession {
 
     private final Player player;
@@ -70,20 +72,16 @@ public class AuthenticationSession {
         switch (response.getCode()) {
             case 0 -> {
                 AccountBindingAuthenticationJob = true;
-                if (player.hasPermission("group.gold")) {
+                if (player.hasPermission("group.energy")) {
                     if (!response.getData().getGuard()) {
-                        MDAuth.LuckPermsApi.getUserManager().modifyUser(player.getUniqueId(), user -> {
-                            user.data().remove(Node.builder("group.gold").build());
-                        });
-                        MDAuth.MDAuthLogger.info("Revoke group.gold permission node from " + player.getName() + "(" + player.getUniqueId() + ")");
+                        LuckPermsApi.getUserManager().modifyUser(player.getUniqueId(), user -> user.data().remove(Node.builder("group.energy").build()));
+                        MDAuth.MDAuthLogger.info("Revoke group.energy permission node from " + player.getName() + "(" + player.getUniqueId() + ")");
                     }
                 }
                 else {
                     if (response.getData().getGuard()) {
-                        MDAuth.LuckPermsApi.getUserManager().modifyUser(player.getUniqueId(), user -> {
-                            user.data().add(Node.builder("group.gold").build());
-                        });
-                        MDAuth.MDAuthLogger.info("Grant group.gold permission node for " + player.getName() + "(" + player.getUniqueId() + ")");
+                        LuckPermsApi.getUserManager().modifyUser(player.getUniqueId(), user -> user.data().add(Node.builder("group.energy").build()));
+                        MDAuth.MDAuthLogger.info("Grant group.energy permission node for " + player.getName() + "(" + player.getUniqueId() + ")");
                     }
                 }
             }

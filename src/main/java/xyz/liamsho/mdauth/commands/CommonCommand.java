@@ -98,7 +98,7 @@ public class CommonCommand implements CommandExecutor {
                 return true;
             case -500:
                 if (platform.equals("kaiheila")) {
-                    MDAuth.MDAuthLogger.info("UID " + args[1] + " of " + player.getName() + " is not correct, bilibili binding or element is null");
+                    MDAuth.MDAuthLogger.info("UID " + args[1] + " of " + player.getName() + " is not correct, bilibili binding or chattor element is null");
                     player.sendMessage("[MDAuth] " + ChatColor.RED + (useChinese ? "绑定失败: 找不到对应的开黑啦 UID, 或未绑定 Bilibili, 或未获得弹幕兽属性角色" :
                             "Binding failed: Can't find the corresponding Kaiheila UID, or unbound Bilibili, or have not obtained the Element role."));
                 } else {
@@ -137,9 +137,9 @@ public class CommonCommand implements CommandExecutor {
         // 修改权限组
         Node node;
         switch (response.getData().getElement()) {
-            case 2 -> node = Node.builder("group.herba").build();
+            case 2 -> node = Node.builder("group.wind").build();
             case 3 -> node = Node.builder("group.aqua").build();
-            case 4 -> node = Node.builder("group.flame").build();
+            case 4 -> node = Node.builder("group.fire").build();
             case 5 -> node = Node.builder("group.earth").build();
             default -> node = null;
         }
@@ -154,8 +154,8 @@ public class CommonCommand implements CommandExecutor {
         MDAuth.MDAuthLogger.info("Grant " + node.getKey() + " permission node for " + player.getName() + "(" + player.getUniqueId() + ")");
 
         if (response.getData().getGuard()) {
-            lpUser.data().add(Node.builder("group.gold").build());
-            MDAuth.MDAuthLogger.info("Grant group.gold permission node for " + player.getName() + "(" + player.getUniqueId() + ")");
+            lpUser.data().add(Node.builder("group.energy").build());
+            MDAuth.MDAuthLogger.info("Grant group.energy permission node for " + player.getName() + "(" + player.getUniqueId() + ")");
         }
 
         MDAuth.LuckPermsApi.getUserManager().saveUser(lpUser);
