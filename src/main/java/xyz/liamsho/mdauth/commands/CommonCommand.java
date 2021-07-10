@@ -79,7 +79,7 @@ public class CommonCommand implements CommandExecutor {
         reqModel.setPlatform(platform);
         reqModel.setPlayerName(player.getName());
         reqModel.setUuid(player.getUniqueId().toString());
-        reqModel.setLegitCopy(CheckLoginMode.isOffline(player.getUniqueId(), player.getName()));
+        reqModel.setLegitCopy(!CheckLoginMode.isOffline(player.getUniqueId(), player.getName()));
         var response = ApiRequest.AddPlayerRequest(reqModel);
 
         // 确认状态码
